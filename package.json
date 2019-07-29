@@ -1,0 +1,16 @@
+{
+  "name": "blackrock",
+  "version": "1.0.0",
+  "description": "Experimental project",
+  "main": "app.js",
+  "scripts": {
+    "test": "whois"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2"
+  }
+}
