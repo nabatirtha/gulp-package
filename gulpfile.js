@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
+const ts = require('gulp-typescript');
 const browserSync = require('browser-sync').create();
 
 function style(){
@@ -9,6 +10,15 @@ function style(){
 	
 }
 
+ function typescript() {
+    return gulp.src('./js/*.ts')
+        .pipe(ts({
+            noImplicitAny: true,
+            //outFile: '*.js'
+        }))
+        .pipe(gulp.dest('./js'));
+}
+
 function watch(){
 	browserSync.init({
 		server:{
@@ -16,8 +26,9 @@ function watch(){
 		}
 	});
 	gulp.watch('./sass/**/*.scss', style).on('change', browserSync.reload);
+	gulp.watch('./js/*.ts', typescript).on('change', browserSync.reload);
 	gulp.watch('./*.html').on('change', browserSync.reload);
-	gulp.watch('./js/**/*.js').on('change', browserSync.reload);
+	gulp.watch('./js/*.js').on('change', browserSync.reload);
 }
 
 exports.style = style;
